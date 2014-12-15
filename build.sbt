@@ -1,6 +1,6 @@
 import bintray.Keys._
 
-name := """core"""
+name := """console-core"""
 
 scalaVersion := "2.11.4"
 
