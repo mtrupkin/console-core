@@ -12,7 +12,9 @@ bintraySettings
 
 releaseSettings
 
-repository in bintray := "maven"
+publishMavenStyle := false
+
+repository in bintray := "ivy"
 
 bintrayOrganization in bintray := None
 
