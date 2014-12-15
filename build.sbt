@@ -1,10 +1,10 @@
 import bintray.Keys._
 
-name := """console-core"""
+name := """core"""
 
 scalaVersion := "2.11.4"
 
-organization := "me.mtrupkin"
+organization := "me.mtrupkin.console"
 
 licenses += ("MIT", url("http://www.opensource.org/licenses/mit-license.html"))
 
