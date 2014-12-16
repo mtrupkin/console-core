@@ -7,7 +7,10 @@ package me.mtrupkin.console
 trait Console {
   def size: Size
 
+  // consume input
   def input(): Option[Input]
-  def render(screen: Screen)
+
+  // draw screen to console
+  def draw(screen: Screen)
 }
 
