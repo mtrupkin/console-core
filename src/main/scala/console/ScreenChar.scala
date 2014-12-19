@@ -9,6 +9,7 @@ import play.api.libs.json._
 case class ScreenChar(c: Char, fg: RGB = White, bg: RGB = Black)
 
 object ScreenChar {
+  implicit def CharToSc(c: Char): ScreenChar = ScreenChar(c)
   implicit def ScToChar(sc: ScreenChar): Char = sc.c
   implicit def ScToString(sc: ScreenChar): String = sc.c.toString
 
