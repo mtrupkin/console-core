@@ -1,6 +1,7 @@
 package me.mtrupkin.console
 
 import me.mtrupkin.console.Key._
+import me.mtrupkin.core.Point
 
 
 /**

@@ -1,4 +1,4 @@
-package me.mtrupkin.console
+package me.mtrupkin.core
 
 import play.api.libs.json.Json
 

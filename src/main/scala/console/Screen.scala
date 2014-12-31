@@ -1,6 +1,8 @@
 package me.mtrupkin.console
 
 import me.mtrupkin.console.Colors._
+import me.mtrupkin.core.{Point, Size}
+
 /**
  * Created by mtrupkin on 12/13/2014.
  */
@@ -13,10 +15,10 @@ class Screen(val size: Size) {
   val buffer = Array.ofDim[ScreenChar](size.width, size.height)
   clear()
 
-  def apply(p: (Int, Int)): ScreenChar = apply(p._1, p._2)
+  def apply(p: Point): ScreenChar = apply(p.x, p.y)
   def apply(x: Int, y: Int): ScreenChar = buffer(x)(y)
 
-  def update(p: (Int, Int), sc: ScreenChar ): Unit = update(p._1, p._2, sc)
+  def update(p: Point, sc: ScreenChar ): Unit = update(p.x, p.y, sc)
   def update(x: Int, y: Int, sc: ScreenChar ): Unit = buffer(x)(y) = sc
 
   def clear() = foreach((x, y, s) => this(x, y) = blank)
@@ -36,8 +38,8 @@ class Screen(val size: Size) {
     ) this(i, j) = f(this(i, j))
   }
 
-  def write(p: (Int, Int), c: Char): Unit = {
-    write(p._1, p._2, c)
+  def write(p: Point, c: Char): Unit = {
+    write(p.x, p.y, c)
   }
 
   def write(x: Int, y: Int, c: Char): Unit = {
