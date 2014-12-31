@@ -13,7 +13,10 @@ class Screen(val size: Size) {
   val buffer = Array.ofDim[ScreenChar](size.width, size.height)
   clear()
 
+  def apply(p: (Int, Int)): ScreenChar = apply(p._1, p._2)
   def apply(x: Int, y: Int): ScreenChar = buffer(x)(y)
+
+  def update(p: (Int, Int), sc: ScreenChar ): Unit = update(p._1, p._2, sc)
   def update(x: Int, y: Int, sc: ScreenChar ): Unit = buffer(x)(y) = sc
 
   def clear() = foreach((x, y, s) => this(x, y) = blank)
