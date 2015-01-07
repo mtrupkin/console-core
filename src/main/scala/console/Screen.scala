@@ -1,7 +1,7 @@
 package me.mtrupkin.console
 
 import me.mtrupkin.console.Colors._
-import me.mtrupkin.core.{Point, Size}
+import me.mtrupkin.core.{Points, Point, Size}
 
 /**
  * Created by mtrupkin on 12/13/2014.
@@ -15,47 +15,23 @@ class Screen(val size: Size) {
   val buffer = Array.ofDim[ScreenChar](size.width, size.height)
   clear()
 
-  def apply(p: Point): ScreenChar = apply(p.x, p.y)
-  def apply(x: Int, y: Int): ScreenChar = buffer(x)(y)
+  def apply(p: Point): ScreenChar = buffer(p.x)(p.y)
+  def update(p: Point, sc: ScreenChar): Unit = buffer(p.x)(p.y) = sc
 
-  def update(p: Point, sc: ScreenChar ): Unit = update(p.x, p.y, sc)
-  def update(x: Int, y: Int, sc: ScreenChar ): Unit = buffer(x)(y) = sc
-
-  def clear() = foreach((x, y, s) => this(x, y) = blank)
-  def clear(x: Int, y: Int) = this(x, y) = blank
-
-  def foreach(f: (Int, Int, ScreenChar) => Unit ): Unit = {
-    for (
-      i <- 0 until size.width;
-      j <- 0 until size.height
-    ) f(i, j, this(i, j))
+  def write(p: Point, sc: ScreenChar): Unit = this(p) = sc
+  def write(p: Point, c: Char): Unit = this(p) = ScreenChar(c, fg, bg)
+  def write(s: String): Unit = write(Points.Origin, s)
+  def write(p: Point, s: String): Unit = {
+    var pos = p.x
+    s.foreach( c => { write(Point(pos, p.y), c); pos += 1 } )
   }
 
-  def transform(f: (ScreenChar) => ScreenChar ): Unit = {
-    for (
-      i <- 0 until size.width;
-      j <- 0 until size.height
-    ) this(i, j) = f(this(i, j))
-  }
+  def foreach(f: (Point, ScreenChar) => Unit ): Unit = size.foreach(p => f(p,this(p)))
 
-  def write(p: Point, c: Char): Unit = {
-    write(p.x, p.y, c)
-  }
+  def clear() = foreach((p, s) => this(p) = blank)
+  def clear(p: Point) = this(p) = blank
 
-  def write(x: Int, y: Int, c: Char): Unit = {
-    this(x, y) = ScreenChar(c, fg, bg)
-  }
-
-  def write(x: Int, y: Int, sc: ScreenChar): Unit = {
-    this(x, y) = sc
-  }
-
-  def write(s: String): Unit = write(0, 0, s)
-
-  def write(x: Int, y: Int, s: String): Unit = {
-    var pos = x
-    s.foreach( c => { write(pos, y, c); pos += 1 } )
-  }
+  def transform(f: (ScreenChar) => ScreenChar ): Unit = size.foreach(p => this(p) = f(this(p)))
 }
 
 object Screen {
@@ -63,11 +39,6 @@ object Screen {
 }
 
 class SubScreen(val origin: Point, val screen: Screen, size: Size) extends Screen(size) {
-  override def update(x: Int, y: Int, sc: ScreenChar) = {
-    screen.update(origin.x + x, origin.y + y, sc)
-  }
-
-  override def apply(x: Int, y: Int): ScreenChar = {
-    screen(origin.x + x, origin.y + y)
-  }
+  override def update(p: Point, sc: ScreenChar) = screen.update(origin + p, sc)
+  override def apply(p: Point): ScreenChar = screen(origin + p)
 }
