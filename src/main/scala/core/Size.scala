@@ -16,6 +16,15 @@ case class Size(width: Int, height: Int) {
     } f(x, y)
   }
 
+  def neighbors(p: Point, r: Int = 1): Seq[Point] = {
+    for {
+      x <- -r to r
+      y <- -r to r
+      if !((x == 0) && (y == 0))
+      p0 = p + (x, y)
+      if in(p0)
+    } yield p0
+  }
 }
 
 object Size {
