@@ -17,8 +17,6 @@ trait StateMachine {
   def currentState: StateType = _currentState
 
   trait State {
-    def update(elapsed: Int): Unit
-
     def flipState(newState: StateType): Unit = {
       previousStates = currentState :: previousStates
       updateState(newState)
@@ -45,9 +43,5 @@ trait StateMachine {
       _currentState = newState
       currentState.onEnter()
     }
-  }
-
-  def update(elapsed: Int) = {
-    currentState.update(elapsed)
   }
 }
