@@ -13,7 +13,7 @@ object ScreenChar {
   implicit def ScToChar(sc: ScreenChar): Char = sc.c
   implicit def ScToString(sc: ScreenChar): String = sc.c.toString
 
-  implicit object RGBColorFormat extends Format[Char] {
+  implicit object CharFormat extends Format[Char] {
     def reads(json: JsValue): JsResult[Char] = json.validate[String].map(_.charAt(0))
     def writes(u: Char): JsValue = JsString(u.toString)
   }
