@@ -10,6 +10,15 @@ import play.api.libs.json.Json
 case class Point(x: Int, y: Int) {
   def +(p: Point): Point = Point(x + p.x, y + p.y)
   def -(p: Point): Point = Point(x - p.x, y - p.y)
+
+  def neighbors(p: Point, r: Int = 1): Seq[Point] = {
+    for {
+      x <- -r to r
+      y <- -r to r
+      if !((x == 0) && (y == 0))
+      p0 = p + (x, y)
+    } yield p0
+  }
 }
 
 object Point {
