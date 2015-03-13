@@ -6,6 +6,8 @@ package me.mtrupkin.console
 object Key extends Enumeration {
   type Key = Value
 
+  val Undefined = Value("Undefined")
+
   val DIGIT0 = Value("DIGIT0")
   val DIGIT1 = Value("DIGIT1")
   val DIGIT2 = Value("DIGIT2")
