@@ -16,7 +16,7 @@ class Screen(val size: Size) {
   clear()
 
   def apply(p: Point): ScreenChar = buffer(p.x)(p.y)
-  def update(p: Point, sc: ScreenChar): Unit = buffer(p.x)(p.y) = sc
+  def update(p: Point, sc: ScreenChar): Unit = if(size.in(p)) buffer(p.x)(p.y) = sc
 
   def write(p: Point, sc: ScreenChar): Unit = this(p) = sc
   def write(p: Point, c: Char): Unit = this(p) = ScreenChar(c, fg, bg)
