@@ -11,12 +11,12 @@ case class Point(x: Int, y: Int) {
   def +(p: Point): Point = Point(x + p.x, y + p.y)
   def -(p: Point): Point = Point(x - p.x, y - p.y)
 
-  def neighbors(p: Point, r: Int = 1): Seq[Point] = {
+  def neighbors(r: Int = 1): Seq[Point] = {
     for {
-      x <- -r to r
-      y <- -r to r
-      if !((x == 0) && (y == 0))
-      p0 = p + (x, y)
+      x0 <- -r to r
+      y0 <- -r to r
+      if !((x0 == 0) && (y0 == 0))
+      p0 = this + (x0, y0)
     } yield p0
   }
 }
