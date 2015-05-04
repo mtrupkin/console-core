@@ -2,7 +2,7 @@ import bintray.Keys._
 
 name := """console-core"""
 
-scalaVersion := "2.11.4"
+scalaVersion := "2.11.6"
 
 organization := "me.mtrupkin.console"
 
