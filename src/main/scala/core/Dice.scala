@@ -1,4 +1,4 @@
-package me.mtrupkin.core
+package org.mtrupkin.core
 
 import scala.util.Random
 

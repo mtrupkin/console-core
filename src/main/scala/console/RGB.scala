@@ -1,6 +1,4 @@
-package me.mtrupkin.console
-
-import play.api.libs.json._
+package org.mtrupkin.console
 
 /**
  * Created by mtrupkin on 12/14/2014.
@@ -8,10 +6,6 @@ import play.api.libs.json._
 case class RGB(r: Int, g: Int, b:Int)
 
 object RGB {
-  implicit object RGBColorFormat extends Format[RGB] {
-    def reads(json: JsValue): JsResult[RGB] = JsSuccess(json.as[String])
-    def writes(u: RGB): JsValue = JsString(u.toString)
-  }
 
   implicit def toString(rgb: RGB): String = {
     import rgb._

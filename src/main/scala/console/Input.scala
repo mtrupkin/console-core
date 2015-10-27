@@ -1,7 +1,7 @@
-package me.mtrupkin.console
+package org.mtrupkin.console
 
-import me.mtrupkin.console.Key._
-import me.mtrupkin.core.Point
+import org.mtrupkin.console.Key._
+import org.mtrupkin.core.Point
 
 
 /**

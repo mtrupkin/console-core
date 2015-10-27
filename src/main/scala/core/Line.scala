@@ -1,6 +1,6 @@
-package me.mtrupkin.path
+package core
 
-import me.mtrupkin.core.Point
+import org.mtrupkin.core.Point
 
 /**
  * Created by mtrupkin on 4/23/2015.
@@ -9,7 +9,7 @@ object Line {
   /**
    * Uses the Bresenham Algorithm to calculate all points on a line from p0 to p1.
    * The iterator returns all points in the interval [start, end).
-   * @return the iterator containing all points on the line
+   * @return iterator containing all points on the line
    */
   def bresenham(p1: Point, p0: Point): Iterator[Point] = {
     import scala.math.abs

@@ -1,7 +1,7 @@
-package me.mtrupkin.console
+package org.mtrupkin.console
 
-import me.mtrupkin.console.Colors._
-import me.mtrupkin.core.{Points, Point, Size}
+import org.mtrupkin.console.Colors._
+import org.mtrupkin.core.{Points, Point, Size}
 
 /**
  * Created by mtrupkin on 12/13/2014.

@@ -1,4 +1,4 @@
-package me.mtrupkin.core
+package org.mtrupkin.core
 
 import scala.reflect.ClassTag
 import scala.Array._

@@ -1,4 +1,4 @@
-package me.mtrupkin.core
+package org.mtrupkin.core
 
 /**
  * Created by mtrupkin on 12/15/2014.

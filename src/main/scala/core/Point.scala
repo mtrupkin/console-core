@@ -1,6 +1,4 @@
-package me.mtrupkin.core
-
-import play.api.libs.json.Json
+package org.mtrupkin.core
 
 /**
  * User: mtrupkin
@@ -24,8 +22,6 @@ case class Point(x: Int, y: Int) {
 object Point {
   implicit def TupleToPoint(t: (Int, Int)): Point = Point(t._1, t._2)
   implicit def PointToTuple(p: Point): (Int, Int) = (p.x, p.y)
-
-  implicit val format = Json.format[Point]
 }
 
 object Points {

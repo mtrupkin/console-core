@@ -1,4 +1,4 @@
-package me.mtrupkin.console
+package org.mtrupkin.console
 
 /**
  * Created by mtrupkin on 12/14/2014.
